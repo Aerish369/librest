@@ -49,7 +49,7 @@ class Borrow(models.Model):
     status = models.CharField(max_length=10, choices=[('borrowed', 'Borrowed'), ('returned', 'Returned')], default='borrowed')
 
     def __str__(self) -> str:
-        return f'{self.user.first_name} borrowed {self.book} on {self.borrowed_date} - status={self.status}'
+        return f'{self.user.first_name} borrowed {self.book} on {self.borrowed_date} (status:{self.status})'
 
 
 class Author(models.Model):
