@@ -45,7 +45,7 @@ class Borrow(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     borrowed_date = models.DateField(auto_now_add=True)
     due_date = models.DateField()
-    return_date = models.DateField()
+    return_date = models.DateField(null=True,  blank=True)
     status = models.CharField(max_length=10, choices=[('borrowed', 'Borrowed'), ('returned', 'Returned')], default='borrowed')
 
     def __str__(self) -> str:
