@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book, Author
+from .models import Book, Author, Tag
 
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -7,8 +7,8 @@ class AuthorSerializer(serializers.ModelSerializer):
         fields = ['full_name', 'bio']
 
 class BookSerializer(serializers.ModelSerializer):
-    author = AuthorSerializer()
-    tag = serializers.StringRelatedField(many=True)
+    author = serializers.PrimaryKeyRelatedField(queryset=Author.objects.all()) #AuthorSerializer()
+    tag = serializers.StringRelatedField(many=True) 
     class Meta:
         model = Book
         fields = ['id', 'title', 'description', 'author', 'published_date', 'tag']
