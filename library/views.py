@@ -7,7 +7,10 @@ from .serializers import BookSerializer
 
 @api_view()
 def books(request):
-    queryset = Book.objects.all()
+    queryset = ( Book.objects
+        .select_related('author')
+        .prefetch_related('author','tag')
+        .all())
     serializer = BookSerializer(queryset, many=True)
     return Response(serializer.data)
 
