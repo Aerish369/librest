@@ -7,8 +7,8 @@ class AuthorSerializer(serializers.ModelSerializer):
         fields = ['full_name', 'bio']
 
 class BookSerializer(serializers.ModelSerializer):
-    author = serializers.PrimaryKeyRelatedField(queryset=Author.objects.all()) #AuthorSerializer()
-    tag = serializers.StringRelatedField(many=True) 
+    author = serializers.PrimaryKeyRelatedField(queryset=Author.objects.all())
+    tag = serializers.PrimaryKeyRelatedField(queryset=Tag.objects.all(), many=True) 
     class Meta:
         model = Book
         fields = ['id', 'title', 'description', 'author', 'published_date', 'tag']
