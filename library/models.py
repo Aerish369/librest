@@ -43,10 +43,14 @@ class Profile(models.Model):
 class Borrow(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    borrowed_date = models.DateField(auto_now_add=True)
+    borrowed_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateField()
     return_date = models.DateField(null=True,  blank=True)
-    status = models.CharField(max_length=10, choices=[('borrowed', 'Borrowed'), ('returned', 'Returned')], default='borrowed')
+    status = models.CharField(max_length=10, choices=[
+                                    ('borrowed', 'Borrowed'), 
+                                    ('returned', 'Returned')
+                                ], 
+                                default='borrowed')
 
     def __str__(self) -> str:
         return f'{self.user.first_name} borrowed {self.book} on {self.borrowed_date} (status:{self.status})'

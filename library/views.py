@@ -13,7 +13,7 @@ from .serializers import BookSerializer
 
 
 class BookViewSet(ModelViewSet):
-    queryset = Book.objects.all()
+    queryset = Book.objects.all().order_by('title')
     serializer_class = BookSerializer
     search_fields = ['title', 'description', 'author__full_name']
     filter_backends = [DjangoFilterBackend, SearchFilter]
