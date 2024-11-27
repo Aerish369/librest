@@ -10,6 +10,11 @@ class Book(models.Model):
     published_date = models.DateField()
     tag = models.ManyToManyField('Tag')
 
+    @property
+    def availability_status(self):
+        active_borrow = self.borrow_set.filter(status='borrowed').exists()
+        return not active_borrow
+
     def __str__(self) -> str:
         return self.title
 
