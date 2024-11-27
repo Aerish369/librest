@@ -36,6 +36,8 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'rest_framework',
+    'djoser',
+    'rest_framework_simplejwt',
     'django_filters',
     'library',
     'users',
@@ -134,6 +136,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 
+# Django Djoser RESTFRAMEWORKSimpleJWT Configs
+ 
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
 }
