@@ -106,7 +106,6 @@
 
 ### 12. **Mobile-Friendly API (Optional: GraphQL)**
 - Implement GraphQL for flexible query capabilities.
-- Fetch specific data efficiently (e.g., books, borrowing history).
 
 ---
 

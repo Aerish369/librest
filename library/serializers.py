@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book, Author, Tag
+from .models import Book, Author, Tag, Profile
 
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,3 +12,10 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ['id', 'title', 'description', 'author', 'published_date', 'tag']
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    user_id = serializers.IntegerField()
+    class Meta:
+        model = Profile
+        fields = ['id', 'bio', 'user_id', 'birth_date', 'created_at']
